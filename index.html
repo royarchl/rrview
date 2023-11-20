@@ -7,8 +7,77 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
+    <nav>
+
+    </nav>
     <main>
-      <h1>Welcome to the website!</h1>
+      <h1>Post an album review!</h1>
+      <form action="./album-upload" id="album-upload" method="post">
+        <!-- base required information -->
+        <label for="albumUrl">Album URL (Spotify)</label>
+        <input type="url" id="albumUrl" name="albumUrl">
+        <input type="reset" value="Reset">
+        <br><br><br>
+
+        <p style="color: red">The following data will be auto-generated after inputting a Spotify album URL.</p>
+        
+        <label for="artistName">Artist</label>
+        <input type="text" id="artistName" name="artistName" placeholder="auto-generated"><br><br>
+        <label for="albumName">Album</label>
+        <input type="text" id="albumName" name="albumName" placeholder="auto-generated"><br><br>
+        <label for="releaseYear">Release Year</label>
+        <input type="date" id="releaseYear" name="releaseYear">
+        <span style="color: grey">(auto-generated)</span><br><br>
+        <label for="albumComment">Comment</label>
+        <input type="text" id="albumComment" name="albumComment"><br><br>
+        <br><br>
+
+        <!-- song-specific information -->
+        <label for="songGood">Good?</label>
+        <input type="checkbox" id="songGood" name="songGood">
+        <label for="songName">Song</label>
+        <input type="text" id="songName" name="songName" placeholder="auto-generated">
+        <label for="songFeatures">Features</label>
+        <input type="text" id="songFeatures" name="songFeatures" placeholder="auto-generated">
+        <label for="songComment">Comment</label>
+        <input type="text" id="songComment" name="songComment">
+        <br><br>
+
+        <!-- song-specific information -->
+        <label for="songGood">Good?</label>
+        <input type="checkbox" id="songGood" name="songGood">
+        <label for="songName">Song</label>
+        <input type="text" id="songName" name="songName" placeholder="auto-generated">
+        <label for="songFeatures">Features</label>
+        <input type="text" id="songFeatures" name="songFeatures" placeholder="auto-generated">
+        <label for="songComment">Comment</label>
+        <input type="text" id="songComment" name="songComment">
+        <br><br>
+
+        <!-- song-specific information -->
+        <label for="songGood">Good?</label>
+        <input type="checkbox" id="songGood" name="songGood">
+        <label for="songName">Song</label>
+        <input type="text" id="songName" name="songName" placeholder="auto-generated">
+        <label for="songFeatures">Features</label>
+        <input type="text" id="songFeatures" name="songFeatures" placeholder="auto-generated">
+        <label for="songComment">Comment</label>
+        <input type="text" id="songComment" name="songComment">
+        <br><br>
+
+
+        <label for="songBest">Best Song</label>
+        <select name="songs" id="songs">
+          <option value="default">Select</option>
+          <option value="song1">Song1</option>
+          <option value="song2">Song2</option>
+          <option value="song3">Song3</option>
+        </select>
+
+        <br><br><br><br>
+        
+        <input type="submit" value="Submit">
+      </form>
     </main>
     <script src="./app.js"></script>
   </body>
