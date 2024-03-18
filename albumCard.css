@@ -1,0 +1,218 @@
+:root {
+    --font-family: Helvetica, sans-serif;
+
+    --background-base: #070707;
+    --background-tinted: #181818;
+    --text-base: #fff;
+    --text-subdued: #a7a7a7;
+    --text-highlight: #fa586a;
+
+    --tracklist-alt-row-color: hsla(0,0%,100%,.015);
+    --tracklist-row-highlight-color: hsla(0,0%,100%,.05);
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-base);
+    font-family: var(--font-family);
+    color: var(--text-base);
+
+    line-height: normal;
+    /* overflow: hidden; */
+}
+
+.warning-banner {
+    position: fixed;
+    width: 100%;
+    height: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--text-highlight);
+}
+
+.highlight {
+    color: var(--text-highlight);
+}
+
+
+.album-cards__container {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 4vmin;
+
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+
+    padding-left: 25vw;
+    padding-right: 27vw;
+
+    /* background-color: red; */
+}
+
+/* IF WE DELETE THE CONTAINER, MAKE THIS RELATIVE AND CHILDREN ABSOLUTE */
+.album-card {
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 3200px;
+
+    width: 50vw;
+    aspect-ratio: 1 / 1;
+    max-width: 695px;
+}
+
+.album-card__front,
+.album-card__back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    transition: all 0.6s ease;
+}
+
+.album-card:nth-child(1) .album-card__front {
+    background-image: url("./img/lana-tunnels.jpeg");
+}
+.album-card:nth-child(2) .album-card__front {
+    background-image: url("./img/blue-banisters.jpg");
+}
+.album-card:nth-child(3) .album-card__front {
+    background-image: url("./img/chemtrails.jpg");
+}
+
+.album-card__front {
+    background-size: cover;
+    background-position: center;
+    transform: rotateX(0deg);       /* default: 0deg */
+}
+.album-card__back {
+    background-color: var(--background-tinted);
+    color: var(--text-base);
+    transform: rotateX(-180deg);    /* default: -180deg */
+    /* position: relative; */
+}
+.album-card:hover .album-card__front {
+    transform: rotateX(180deg);     /* default: 180deg */
+}
+.album-card:hover .album-card__back {
+    transform: rotateX(0deg);       /* default: 0deg */
+}
+
+
+/* BACK OF CARD design patterns */
+.album-card__back--wrapper {
+    height: inherit;
+    /* overflow: hidden; */
+    padding: 3em;
+}
+
+.album-headings {
+    padding-bottom: 2em;
+    /* background-color: plum; */
+}
+
+.album-title {
+    font-size: clamp(1rem, 2.4vw, 1.8rem);
+    font-weight: 900;
+    margin-top: 1em;
+}
+
+.album-subheadings {
+    display: flex;
+    font-size: clamp(0.6rem, 1.2vw, 0.875rem);
+    font-weight: 700;
+    padding: 0.4em 0 1.2em;
+}
+.album-artist {
+    font-weight: 700;
+    color: var(--text-highlight);
+}
+.album-year {
+    font-weight: 400;
+}
+.separator:not(:first-child)::before {
+    content: "•";
+    margin: 0 0.875em;
+}
+
+.album-comments {
+    font-size: clamp(0.5rem, 1vw, 0.8rem);
+    color: var(--text-subdued);
+    /* background-color: var(--tracklist-alt-row-color); */
+    /* border-radius: 5px; */
+}
+
+
+.songs-list {
+    /* background-color: beige; */
+    /* background-color: var(--tracklist-alt-row-color); */
+    /* border-radius: 5px; */
+}
+
+.songs-list-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6em 1em;
+    /* border-radius: 5px; */
+    gap: 1em;
+}
+.songs-list-row:not(:last-child) {
+    border-bottom: 1px solid var(--tracklist-row-highlight-color);
+}
+
+.songs-list-row__song-container {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+.songs-list-row__song-info {
+    display: grid;
+}
+
+.songs-list-row__song-index {
+    color: var(--text-subdued);
+    font-size: 0.75rem;
+}
+.songs-list-row__song-name {
+    font-size: 1rem;
+}
+.songs-list-row__song-comment {
+    color: var(--text-subdued);
+    font-size: 0.6rem;
+    /* font-size: clamp(0.5rem, 1vw, 0.8rem); */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.songs-list-row:nth-child(odd) {
+    background-color: var(--tracklist-alt-row-color);
+}
+.songs-list-row:hover {
+    background-color: var(--tracklist-row-highlight-color);
+    /* border-radius: 5px; */
+}
+
+
+.icon {
+    height: 16px;
+    width: 16px;
+    background-image: url("./img/heart-empty.png");
+    background-size: cover;
+}
+.icon-filled {
+    height: 16px;
+    width: 16px;
+    background-image: url("./img/heart-filled-pink.png");
+    background-size: contain;
+}

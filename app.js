@@ -13,6 +13,14 @@ let artistsArray = [
 artistsArray.sort( (a,b) => a.localeCompare(b, 'en', { sensitivity: "base" }));
 
 
+function normalizeText(text)
+{
+    const normalizedText = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const dashedText = normalizedText.replace(/\s+/g, '-');
+    const finalText = dashedText.charAt(0).toUpperCase() + dashedText.slice(1).toLowerCase();
+    return finalText;
+}
+
 function generateAlphabetLetters() 
 {
     const lettersContainer = document.getElementById("letters-container");
@@ -57,8 +65,7 @@ function generateAlphabetLetters()
             const firstLetter = artist.charAt(0).toUpperCase();
             if (firstLetter === letter) {
                 const artistLink = document.createElement('a');
-                // artistLink.href = `${artist}`.replace(/ /g, '-').toLowerCase();
-                artistLink.href = encodeURIComponent(artist.replace(/\s+/g, '-'));
+                artistLink.href = normalizeText(artist);
                 artistLink.className = "artist-link";
                 artistLink.textContent = artist;
                 letterContainer.appendChild(artistLink);
