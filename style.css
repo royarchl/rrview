@@ -1,32 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* @import url("./theme.css"); */
 
-:root {
-    --font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; /*Helvetica, sans-serif;*/
-
-    --background-base: #070707;
-    --background-tinted: #181818;
-    --text-base: #fff;
-    --text-secondary: #222;  /* #221f1f */
-    --text-subdued: #a7a7a7;
-    
-    --text-highlight--primary: #fa586a;
-    --text-highlight--secondary: #1DB594;
-
-    --tracklist-alt-row-color: hsla(0,0%,100%,.015);
-    --tracklist-row-highlight-color: hsla(0,0%,100%,.05);
-}
-
-body {
-    /* color: #070707; */
-
-    background-color: var(--background-base);
-    color: var(--text-base);
-    font-family: var(--font-family);
-}
 
 ::selection {
     background-color: var(--text-base);
@@ -48,18 +21,36 @@ button:hover {
     cursor: pointer;
 }
 
+.highlight {
+    background-color: var(--text-highlight--secondary);
+    color: var(--background-base);
+    margin-left: 2px;
+    padding: 0 2px;
+    border-radius: 3px;
+}
 
-#warning-banner {
+
+#banner {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-highlight--secondary);
+    font-weight: 900;
     width: 100%;
     padding: 1.5em 5em;
     position: fixed;
     background-color: var(--background-base);
     z-index: 1;
 }
-#warning-banner > * {
-    padding-right: 1em;
+#banner h2 {
+    font-size: 1.5rem;
+    cursor: default;
 }
+.buttons-container {
+    display: flex;
+    gap: 0.5em;
+}
+
 
 
 .container-wrapper {
@@ -74,17 +65,12 @@ button:hover {
 
 .main-heading {
     text-align: center;
-    /* background-color: #000; */
-    /* background-color: #1DB594; */
-    /* color: #fff; */
-
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
 #quicknav { 
     text-align: center;
-    /* color: #1DB594; */
 }
 
 #navigation {
@@ -97,15 +83,13 @@ button:hover {
 
 .navigation-letter {
     text-decoration: none;
-    color: var(--background-tinted);
+    color: var(--text-secondary);
 }
 .navigation-letter:hover {
-    /* color: #fff; */
-    /* background-color: #1DB594; */
     color: var(--text-highlight--secondary);
-    /* color: #fa586a; */
     text-decoration: underline;
 }
+
 
 .letters-grid {
     display: grid;
@@ -115,19 +99,10 @@ button:hover {
     row-gap: 2rem;
 }
 
-/* 
-#letters-container {
-    display: flex;
-    min-width: 45vw;
-    margin: 0 auto;
-}
-*/
-
-
 .letter-container {
     padding: 0.6em;
-
-    /* background-color: red; */
+    scroll-margin-top: 5em;     /* NECESSARY because the banner cuts off view
+                                   vertically */
 }
 
 .big-letter {
@@ -148,6 +123,7 @@ button:hover {
     margin-top: 2px;
     /* color: inherit; */
     text-decoration: none;
+    /* color: var(--text-secondary); */
     color: var(--text-secondary);
 }
 .artist-link:hover {

@@ -1,18 +1,5 @@
-:root {
-    --font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; /*Helvetica, sans-serif;*/
+/* @import url("./theme.css"); */
 
-    --background-base: #070707;
-    --background-tinted: #181818;
-    --text-base: #fff;
-    --text-secondary: #222;  /* #221f1f */
-    --text-subdued: #a7a7a7;
-
-    --text-highlight--primary: #fa586a;
-    --text-highlight--secondary: #1DB594;
-
-    --tracklist-alt-row-color: hsla(0,0%,100%,.015);
-    --tracklist-row-highlight-color: hsla(0,0%,100%,.05);
-}
 
 .material-icons.md-18,
 .material-symbols-outlined.md-18 {
@@ -23,22 +10,6 @@
     color: var(--text-highlight--secondary);
 }
 
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: var(--background-base);
-    font-family: var(--font-family);
-    color: var(--text-base);
-
-    /* EVENTUALLY IMPLEMENT SCROLL VIA JS */
-}
-
 
 .warning-banner {
     position: fixed;
@@ -47,8 +18,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--text-highlight--primary);
-    /* background-color: var(--text-highlight--secondary); */
+    background-color: var(--text-highlight--secondary);
+    color: var(--background-base);
     font-weight: 700;
     z-index: 1;
 }
@@ -88,11 +59,6 @@ body {
     width: 50vw;
     aspect-ratio: 1 / 1;
     max-width: 695px;
-
-    /* padding: 0 50%; */
-
-    /* left: 50vw;
-    transform: translateX(-50%); */
 }
 
 .album-card__front,
@@ -190,7 +156,6 @@ body {
 }
 .album-artist {
     font-weight: 700;
-    /* color: var(--text-highlight--primary); */
     color: var(--text-highlight--secondary);
 }
 .album-year {
@@ -207,13 +172,9 @@ body {
 }
 
 
-/* BEGINNING OF EDITS */
 .songs-list {
     overflow-y: auto;
     scrollbar-width: none;
-    /* background-color: var(--tracklist-alt-row-color); */
-    /* border-radius: 5px; */
-    /* border-bottom: 1px dashed var(--text-highlight--primary); */
 }
 
 .songs-list-row {
@@ -305,4 +266,3 @@ body {
 .songs-list-row:hover {
     background-color: var(--tracklist-row-highlight-color);
 }
-/* END OF EDITS */

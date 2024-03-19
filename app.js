@@ -49,11 +49,12 @@ function generateAlphabetLetters()
 
         
         const letterContainer = document.createElement("div");
+        letterContainer.id = `section-${letter}`;
         letterContainer.className = "letter-container";
 
         const bigLetter = document.createElement("div");
         bigLetter.className = "big-letter";
-        bigLetter.id = `section-${letter}`;
+        // bigLetter.id = `section-${letter}`;
         bigLetter.innerHTML = `<h2>${letter}</h2>`;
         letterContainer.appendChild(bigLetter);
 
@@ -80,7 +81,7 @@ function generateAlphabetLetters()
 function scrollToLetter(letter) {
     const letterSection = document.getElementById(`letter-${letter}`);
     if (letterSection) {
-        letterSection.scrollIntoView({ behavior: "smooth" });
+        letterSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 }
 
