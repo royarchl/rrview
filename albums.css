@@ -1,0 +1,308 @@
+:root {
+    --font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; /*Helvetica, sans-serif;*/
+
+    --background-base: #070707;
+    --background-tinted: #181818;
+    --text-base: #fff;
+    --text-secondary: #222;  /* #221f1f */
+    --text-subdued: #a7a7a7;
+
+    --text-highlight--primary: #fa586a;
+    --text-highlight--secondary: #1DB594;
+
+    --tracklist-alt-row-color: hsla(0,0%,100%,.015);
+    --tracklist-row-highlight-color: hsla(0,0%,100%,.05);
+}
+
+.material-icons.md-18,
+.material-symbols-outlined.md-18 {
+    font-size: 18px;
+    color: var(--text-subdued);
+}
+.material-icons.filled {
+    color: var(--text-highlight--secondary);
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-base);
+    font-family: var(--font-family);
+    color: var(--text-base);
+
+    /* EVENTUALLY IMPLEMENT SCROLL VIA JS */
+}
+
+
+.warning-banner {
+    position: fixed;
+    width: 100%;
+    height: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--text-highlight--primary);
+    /* background-color: var(--text-highlight--secondary); */
+    font-weight: 700;
+    z-index: 1;
+}
+
+.highlight {
+    color: var(--text-highlight--primary);
+}
+
+
+.album-cards__container {
+    position: absolute;
+    display: grid;
+    gap: 4vmin;
+
+    /* COMMENT FOR VERTICAL LAYOUT */
+    grid-auto-flow: column;
+    top: 50%;
+    transform: translate(0%, -50%);
+    padding: 0 25vw;
+    
+
+    /* UNCOMMENT FOR VERTICAL LAYOUT */
+    /* grid-auto-flow: row;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    padding: 27vh 0; */
+
+    /* background-color: red; */
+}
+
+/* IF WE DELETE THE CONTAINER, MAKE THIS RELATIVE AND CHILDREN ABSOLUTE */
+.album-card {
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 3200px;
+
+    width: 50vw;
+    aspect-ratio: 1 / 1;
+    max-width: 695px;
+
+    /* padding: 0 50%; */
+
+    /* left: 50vw;
+    transform: translateX(-50%); */
+}
+
+.album-card__front,
+.album-card__back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    transition: all 0.6s ease;
+}
+
+/* SETTING ALBUM FRONT IMAGES (TEMP) */
+.album-card:nth-child(1) .album-card__front {
+    background-image: url("./img/lana-tunnels.jpeg");
+}
+.album-card:nth-child(2) .album-card__front {
+    background-image: url("./img/blue-banisters.jpg");
+}
+.album-card:nth-child(3) .album-card__front {
+    background-image: url("./img/chemtrails.jpg");
+}
+.album-card:nth-child(4) .album-card__front {
+    background-image: url(
+        https://static.wixstatic.com/media/0d4ea1_18d53d882f504a07910ee830bee1b5cb~mv2.jpg/v1/fill/w_1000,h_1000,al_c,q_85/0d4ea1_18d53d882f504a07910ee830bee1b5cb~mv2.jpg
+    );
+}
+.album-card:nth-child(5) .album-card__front {
+    background-image: url(
+        https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.brooklynvegan.com%2Ffiles%2F2017%2F04%2Flana-del-rey-lust-for-life.jpg&f=1&nofb=1&ipt=5ded92428a49a89e882c0190d42eaba681b5999e49733d93724699f49687a0b7&ipo=images
+    );
+}
+.album-card:nth-child(6) .album-card__front {
+    background-image: url(
+        https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-M_Z6t7Rvgj4%2FVf2CFTQ_doI%2FAAAAAAAA7rc%2Fiip3MQUNxow%2Fs1600%2Fhoneymoon-lana-del-rey-album.jpg&f=1&nofb=1&ipt=f3d9dbfde96b9ca9e8cb8a0ff592a13408abb9dfb8d07b082dfc31a6f669087f&ipo=images
+    );
+}
+.album-card:nth-child(7) .album-card__front {
+    background-image: url(
+        https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftheartsdesk.com%2Fsites%2Fdefault%2Ffiles%2Fmastimages%2FLana-Del-Rey-Ultraviolence-Deluxe-2014-1200x1200.png&f=1&nofb=1&ipt=fc5afd43babd7efc604016bc7702d9e241adb3f796a7a0471ea3cad0639028ff&ipo=images
+    );
+}
+.album-card:nth-child(8) .album-card__front {
+    background-image: url(
+        https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fm.media-amazon.com%2Fimages%2FI%2F71S9hNDFDKL._AC_SL1400_.jpg&f=1&nofb=1&ipt=8e30356d5f1215f338fa739266ba994c7d2442b6764f133907d51d206e34fa54&ipo=images
+    );
+}
+/* END OF TEMP IMAGE DECLARATIONS */
+
+.album-card__front {
+    background-size: cover;
+    background-position: center;
+    transform: rotateX(0deg);       /* default: 0deg */
+}
+.album-card__back {
+    background-color: var(--background-tinted);
+    color: var(--text-base);
+    transform: rotateX(-180deg);    /* default: -180deg */
+    /* position: relative; */
+}
+.album-card:hover .album-card__front {
+    transform: rotateX(180deg);     /* default: 180deg */
+}
+.album-card:hover .album-card__back {
+    transform: rotateX(0deg);       /* default: 0deg */
+}
+
+
+/* BACK OF CARD design patterns */
+.album-card__back--wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: inherit;
+    
+    /* overflow: hidden; */
+    padding: 3em;
+}
+
+.album-headings {
+    padding-bottom: 2em;
+    /* background-color: plum; */
+}
+
+.album-title {
+    font-size: clamp(1rem, 2.4vw, 1.8rem);
+    font-weight: 900;
+    margin-top: 1em;
+}
+
+.album-subheadings {
+    display: flex;
+    font-size: clamp(0.6rem, 1.2vw, 0.875rem);
+    font-weight: 700;
+    padding: 0.4em 0 1.2em;
+}
+.album-artist {
+    font-weight: 700;
+    /* color: var(--text-highlight--primary); */
+    color: var(--text-highlight--secondary);
+}
+.album-year {
+    font-weight: 400;
+}
+.separator:not(:first-child)::before {
+    content: "•";
+    margin: 0 0.875em;
+}
+
+.album-comments {
+    font-size: clamp(0.5rem, 1vw, 0.8rem);
+    color: var(--text-subdued);
+}
+
+
+/* BEGINNING OF EDITS */
+.songs-list {
+    overflow-y: auto;
+    scrollbar-width: none;
+    /* background-color: var(--tracklist-alt-row-color); */
+    /* border-radius: 5px; */
+    /* border-bottom: 1px dashed var(--text-highlight--primary); */
+}
+
+.songs-list-row {
+    display: grid;
+    padding: 0 16px;
+    height: 56px;   /* SET ELSEWHERE */
+
+    grid-template-columns: [index] 16px [first] minmax(120px,4fr) [last] 24px /*minmax(120px,1fr)*/;
+    grid-gap: 16px;
+}
+
+.songs-list-row__song-index {
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    color: var(--text-subdued);
+}
+.index-number {
+    display: inline-block;
+    height: 16px;
+    min-height: 16px;
+    width: 16px;
+    min-width: 16px;
+    position: relative;
+}
+.index-number__value {
+    margin-block: 0px;
+    position: absolute;
+    right: .25em;
+    /* top: -4px; */
+    /* font-size: 0.8rem; */
+}
+
+.songs-list-row__song-info {
+    display: flex;
+    align-items: center;
+}
+
+.songs-list-row__song-info--grid {
+    display: grid;
+    column-gap: 4px;    /* NECESSARY FOR EXPLICIT TAG SPACING */
+    grid-template: "title title" "badges subtitle" /auto 1fr;
+    align-items: center;
+    padding-inline-end: 8px;
+
+    white-space: nowrap;
+}
+
+.songs-list-row__song-name {
+    grid-area: title;
+    justify-self: start;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.songs-list-row__song-comment {
+    margin-block: 0px;
+    color: var(--text-subdued);
+    grid-area: subtitle;
+    grid-column-start: badges;
+
+    font-size: 0.6rem;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.songs-list__col--rating {
+    display: flex;
+    align-items: center;
+    
+    grid-column: last;
+    justify-content: flex-end;
+}
+.songs-list-row__rating-icon {
+    color: var(--text-subdued);
+}
+.songs-list-row__rating-icon:not(:last-child) {
+    margin-right: 12px;
+}
+
+
+.songs-list-row:not(:last-child) {
+    border-bottom: 1px solid var(--tracklist-row-highlight-color);
+}
+.songs-list-row:nth-child(odd) {
+    background-color: var(--tracklist-alt-row-color);
+}
+.songs-list-row:hover {
+    background-color: var(--tracklist-row-highlight-color);
+}
+/* END OF EDITS */

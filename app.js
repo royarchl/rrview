@@ -54,31 +54,24 @@ function generateAlphabetLetters()
         const bigLetter = document.createElement("div");
         bigLetter.className = "big-letter";
         bigLetter.id = `section-${letter}`;
-        bigLetter.innerHTML = `<h1>${letter}</h1>`;
+        bigLetter.innerHTML = `<h2>${letter}</h2>`;
         letterContainer.appendChild(bigLetter);
-
-        // flag to check for child artists
-        let hasArtists = false;
 
         // iterate over the artistsArray
         artistsArray.forEach(artist => {
             const firstLetter = artist.charAt(0).toUpperCase();
             if (firstLetter === letter) {
                 const artistLink = document.createElement('a');
-                artistLink.href = normalizeText(artist);
+                
+                // artistLink.href = normalizeText(artist);
+                artistLink.href = "albums.html";
+
                 artistLink.className = "artist-link";
                 artistLink.textContent = artist;
                 letterContainer.appendChild(artistLink);
                 letterContainer.appendChild(document.createElement('br'));
-
-                hasArtists = true;
             }
         });
-
-        if (!hasArtists) {
-            bigLetter.style.color = "lightgray";
-            letterLink.style.color = "lightgray";
-        }
 
         lettersContainer.appendChild(letterContainer);
     });

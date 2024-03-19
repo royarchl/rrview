@@ -5,12 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Album Scroll</title>
-    <link rel="stylesheet" href="./albumCard.css">
+    <link rel="stylesheet" href="./albums.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .material-icons {
+            font-variation-settings: 
+            'FILL' 1,
+            'wght' 300,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 300,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+
 </head>
 
 <body>
     <div class="warning-banner">
-        <p>This site is still under development.</p>
+        <p>This page is still under development.</p>
     </div>
 
     <div class="album-cards__container">
@@ -35,71 +56,181 @@
                     </div>
 
                     <div class="songs-list">
+
                         <div class="songs-list-row">
-                            <div class="songs-list-row__song-container"> <!-- flex -->
-                                <div class="songs-list-row__song-index">1</div>
-                                <div class="songs-list-row__song-info"> <!-- grid -->
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">1</span>
+                                </div>
+                            </div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
                                     <span class="songs-list-row__song-name">The Grants</span>
                                     <span class="songs-list-row__song-comment">Lorem ipsum dolor, sit amet consectetur
                                         adipisicing elit. Aspernatur tenetur perspiciatis sequi.</span>
                                 </div>
                             </div>
-                            <div class="songs-list__col songs-list__col--rating">
-                                <div class="songs-list-row__rating-icon icon"></div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-symbols-outlined md-18 md-inactive">favorite</div>
                             </div>
                         </div>
 
                         <div class="songs-list-row">
-                            <div class="songs-list-row__song-container"> <!-- flex -->
-                                <div class="songs-list-row__song-index">2</div>
-                                <div class="songs-list-row__song-info"> <!-- grid -->
-                                    <span class="songs-list-row__song-name">Did you know that there's a tunnel under
-                                        Ocean Blvd</span>
-                                    <span class="songs-list-row__song-comment">No comment.</span>
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">2</span>
                                 </div>
                             </div>
-                            <div class="songs-list__col songs-list__col--rating">
-                                <div class="songs-list-row__rating-icon icon"></div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
+                                    <span class="songs-list-row__song-name">Did you know that there's a tunnel under Ocean Blvd</span>
+                                    <span class="songs-list-row__song-comment"></span>
+                                </div>
+                            </div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-icons md-18 filled">favorite</div>
                             </div>
                         </div>
 
                         <div class="songs-list-row">
-                            <div class="songs-list-row__song-container"> <!-- flex -->
-                                <div class="songs-list-row__song-index">3</div>
-                                <div class="songs-list-row__song-info"> <!-- grid -->
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">3</span>
+                                </div>
+                            </div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
                                     <span class="songs-list-row__song-name">Sweet</span>
-                                    <span class="songs-list-row__song-comment">No comment.</span>
+                                    <span class="songs-list-row__song-comment"></span>
                                 </div>
                             </div>
-                            <div class="songs-list__col songs-list__col--rating">
-                                <div class="songs-list-row__rating-icon icon-filled"></div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-icons md-18 filled">favorite</div>
                             </div>
                         </div>
 
                         <div class="songs-list-row">
-                            <div class="songs-list-row__song-container"> <!-- flex -->
-                                <div class="songs-list-row__song-index">4</div>
-                                <div class="songs-list-row__song-info"> <!-- grid -->
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">4</span>
+                                </div>
+                            </div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
                                     <span class="songs-list-row__song-name">A&W</span>
-                                    <span class="songs-list-row__song-comment">No comment.</span>
+                                    <span class="songs-list-row__song-comment"></span>
                                 </div>
                             </div>
-                            <div class="songs-list__col songs-list__col--rating">
-                                <div class="songs-list-row__rating-icon icon-filled"></div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-icons md-18 filled">favorite</div>
                             </div>
                         </div>
+
                         <div class="songs-list-row">
-                            <div class="songs-list-row__song-container"> <!-- flex -->
-                                <div class="songs-list-row__song-index">5</div>
-                                <div class="songs-list-row__song-info"> <!-- grid -->
-                                    <span class="songs-list-row__song-name">Judah Smith Interlude</span>
-                                    <span class="songs-list-row__song-comment">No comment.</span>
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">5</span>
                                 </div>
                             </div>
-                            <div class="songs-list__col songs-list__col--rating">
-                                <div class="songs-list-row__rating-icon icon"></div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
+                                    <span class="songs-list-row__song-name">Judah Smith Interlude</span>
+                                    <span class="songs-list-row__song-comment">Lorem ipsum dolor, sit amet consectetur
+                                        adipisicing elit. Aspernatur tenetur perspiciatis sequi.</span>
+                                </div>
+                            </div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-symbols-outlined md-18">favorite</div>
                             </div>
                         </div>
+
+                        <div class="songs-list-row">
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">6</span>
+                                </div>
+                            </div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
+                                    <span class="songs-list-row__song-name">Candy Necklace (feat. Jon Batiste)</span>
+                                    <span class="songs-list-row__song-comment"></span>
+                                </div>
+                            </div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-icons md-18 filled">favorite</div>
+                            </div>
+                        </div>
+
+                        <div class="songs-list-row">
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">7</span>
+                                </div>
+                            </div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
+                                    <span class="songs-list-row__song-name">Jon Batiste Interlude</span>
+                                    <span class="songs-list-row__song-comment"></span>
+                                </div>
+                            </div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-icons md-18 filled">favorite</div>
+                            </div>
+                        </div>
+
+                        <div class="songs-list-row">
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">8</span>
+                                </div>
+                            </div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
+                                    <span class="songs-list-row__song-name">Kintsugi</span>
+                                    <span class="songs-list-row__song-comment"></span>
+                                </div>
+                            </div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-symbols-outlined md-18">favorite</div>
+                            </div>
+                        </div>
+
+                        <div class="songs-list-row">
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">9</span>
+                                </div>
+                            </div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
+                                    <span class="songs-list-row__song-name">Fingertips</span>
+                                    <span class="songs-list-row__song-comment">Lorem ipsum dolor, sit amet consectetur
+                                        adipisicing elit.</span>
+                                </div>
+                            </div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-icons md-18 filled">favorite</div>
+                            </div>
+                        </div>
+
+                        <div class="songs-list-row">
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">10</span>
+                                </div>
+                            </div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
+                                    <span class="songs-list-row__song-name">Paris, Texas (feat. SYML)</span>
+                                    <span class="songs-list-row__song-comment"></span>
+                                </div>
+                            </div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-symbols-outlined md-18">favorite</div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -127,67 +258,87 @@
 
                     <div class="songs-list">
                         <div class="songs-list-row">
-                            <div class="songs-list-row__song-container"> <!-- flex -->
-                                <div class="songs-list-row__song-index">1</div>
-                                <div class="songs-list-row__song-info"> <!-- grid -->
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">1</span>
+                                </div>
+                            </div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
                                     <span class="songs-list-row__song-name">Text Book</span>
+                                    <span class="songs-list-row__song-comment"></span>
+                                </div>
+                            </div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-icons md-18 filled">favorite</div>
+                            </div>
+                        </div>
+
+                        <div class="songs-list-row">
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">2</span>
+                                </div>
+                            </div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
+                                    <span class="songs-list-row__song-name">Blue Banisters</span>
                                     <span class="songs-list-row__song-comment">Lorem ipsum dolor, sit amet consectetur
                                         adipisicing elit. Aspernatur tenetur perspiciatis sequi.</span>
                                 </div>
                             </div>
-                            <div class="songs-list__col songs-list__col--rating">
-                                <div class="songs-list-row__rating-icon icon-filled"></div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-icons md-18 filled">favorite</div>
                             </div>
                         </div>
 
                         <div class="songs-list-row">
-                            <div class="songs-list-row__song-container"> <!-- flex -->
-                                <div class="songs-list-row__song-index">2</div>
-                                <div class="songs-list-row__song-info"> <!-- grid -->
-                                    <span class="songs-list-row__song-name">Blue Banisters</span>
-                                    <span class="songs-list-row__song-comment">No comment.</span>
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">3</span>
                                 </div>
                             </div>
-                            <div class="songs-list__col songs-list__col--rating">
-                                <div class="songs-list-row__rating-icon icon-filled"></div>
-                            </div>
-                        </div>
-
-                        <div class="songs-list-row">
-                            <div class="songs-list-row__song-container"> <!-- flex -->
-                                <div class="songs-list-row__song-index">3</div>
-                                <div class="songs-list-row__song-info"> <!-- grid -->
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
                                     <span class="songs-list-row__song-name">Arcadia</span>
-                                    <span class="songs-list-row__song-comment">No comment.</span>
+                                    <span class="songs-list-row__song-comment"></span>
                                 </div>
                             </div>
-                            <div class="songs-list__col songs-list__col--rating">
-                                <div class="songs-list-row__rating-icon icon-filled"></div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-icons md-18 filled">favorite</div>
                             </div>
                         </div>
 
                         <div class="songs-list-row">
-                            <div class="songs-list-row__song-container"> <!-- flex -->
-                                <div class="songs-list-row__song-index">4</div>
-                                <div class="songs-list-row__song-info"> <!-- grid -->
-                                    <span class="songs-list-row__song-name">Interlude - The Trio</span>
-                                    <span class="songs-list-row__song-comment">No comment.</span>
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">4</span>
                                 </div>
                             </div>
-                            <div class="songs-list__col songs-list__col--rating">
-                                <div class="songs-list-row__rating-icon icon-filled"></div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
+                                    <span class="songs-list-row__song-name">Interlude - The Trio</span>
+                                    <span class="songs-list-row__song-comment"></span>
+                                </div>
+                            </div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-icons md-18 filled">favorite</div>
                             </div>
                         </div>
                         <div class="songs-list-row">
-                            <div class="songs-list-row__song-container"> <!-- flex -->
-                                <div class="songs-list-row__song-index">5</div>
-                                <div class="songs-list-row__song-info"> <!-- grid -->
-                                    <span class="songs-list-row__song-name">Black Bathing Suit</span>
-                                    <span class="songs-list-row__song-comment">No comment.</span>
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">5</span>
                                 </div>
                             </div>
-                            <div class="songs-list__col songs-list__col--rating">
-                                <div class="songs-list-row__rating-icon icon"></div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
+                                    <span class="songs-list-row__song-name">Black Bathing Suit</span>
+                                    <span class="songs-list-row__song-comment"></span>
+                                </div>
+                            </div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-symbols-outlined md-18">favorite</div>
                             </div>
                         </div>
                     </div>
@@ -209,47 +360,155 @@
                             <div class="album-year separator">2021</div>
                         </div>
                         <div class="album-comments">
-                            <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, dolorem
-                                magnam? Ullam aliquid ipsam quasi. Qui veniam natus nam ex consectetur optio. Quasi,
-                                facilis iure.</span>
+                            <!-- <span></span> -->
                         </div>
                     </div>
 
                     <div class="songs-list">
                         <div class="songs-list-row">
-                            <!-- <div class="songs-list__col songs-list__col--song"> -->
-                            <div class="songs-list-row__song-container"> <!-- flex -->
-                                <div class="songs-list-row__song-index">1</div>
-                                <div class="songs-list-row__song-info"> <!-- grid -->
-                                    <span class="songs-list-row__song-name">The Grants</span>
-                                    <span class="songs-list-row__song-comment">No comment.</span>
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">1</span>
                                 </div>
                             </div>
-                            <!-- </div> -->
-                            <div class="songs-list__col songs-list__col--rating">
-                                <div class="songs-list-row__rating-icon icon"></div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
+                                    <span class="songs-list-row__song-name">White Dress</span>
+                                    <span class="songs-list-row__song-comment"></span>
+                                </div>
+                            </div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-icons md-18 filled">favorite</div>
                             </div>
                         </div>
-
                         <div class="songs-list-row">
-                            <!-- <div class="songs-list__col songs-list__col--song"> -->
-                            <div class="songs-list-row__song-container"> <!-- flex -->
-                                <div class="songs-list-row__song-index">2</div>
-                                <div class="songs-list-row__song-info"> <!-- grid -->
-                                    <span class="songs-list-row__song-name">Did you know that there's a tunnel under
-                                        Ocean Blvd</span>
-                                    <span class="songs-list-row__song-comment">No comment.</span>
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">2</span>
                                 </div>
                             </div>
-                            <!-- </div> -->
-                            <div class="songs-list__col songs-list__col--rating">
-                                <div class="songs-list-row__rating-icon icon"></div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
+                                    <span class="songs-list-row__song-name">Chemtrails Over The Country Club</span>
+                                    <span class="songs-list-row__song-comment"></span>
+                                </div>
+                            </div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-icons md-18 filled">favorite</div>
+                            </div>
+                        </div>
+                        <div class="songs-list-row">
+                            <div class="songs-list-row__song-index">
+                                <div class="index-number">
+                                    <span class="index-number__value">3</span>
+                                </div>
+                            </div>
+                            <div class="songs-list-row__song-info"> 
+                                <div class="songs-list-row__song-info--grid">
+                                    <span class="songs-list-row__song-name">Tulsa Jesus Freak</span>
+                                    <span class="songs-list-row__song-comment"></span>
+                                </div>
+                            </div>
+                            <div class="songs-list__col--rating">
+                                <div class="songs-list-row__rating-icon material-icons md-18 filled">favorite</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="album-card">
+            <div class="album-card__front"></div>
+            <div class="album-card__back">
+                <div class="album-card__back--wrapper">
+                    <div class="album-headings">
+                        <h2 class="album-title">Norman Fucking Rockwell!</h2>
+                        <div class="album-subheadings">
+                            <div class="album-artist separator">Lana Del Rey</div>
+                            <div class="album-year separator">2019</div>
+                        </div>
+                        <div class="album-comments"></div>
+                    </div>
+
+                    <div class="songs-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="album-card">
+            <div class="album-card__front"></div>
+            <div class="album-card__back">
+                <div class="album-card__back--wrapper">
+                    <div class="album-headings">
+                        <h2 class="album-title">Lust For Life</h2>
+                        <div class="album-subheadings">
+                            <div class="album-artist separator">Lana Del Rey</div>
+                            <div class="album-year separator">2017</div>
+                        </div>
+                        <div class="album-comments"></div>
+                    </div>
+
+                    <div class="songs-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="album-card">
+            <div class="album-card__front"></div>
+            <div class="album-card__back">
+                <div class="album-card__back--wrapper">
+                    <div class="album-headings">
+                        <h2 class="album-title">Honeymoon</h2>
+                        <div class="album-subheadings">
+                            <div class="album-artist separator">Lana Del Rey</div>
+                            <div class="album-year separator">2015</div>
+                        </div>
+                        <div class="album-comments"></div>
+                    </div>
+
+                    <div class="songs-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="album-card">
+            <div class="album-card__front"></div>
+            <div class="album-card__back">
+                <div class="album-card__back--wrapper">
+                    <div class="album-headings">
+                        <h2 class="album-title">Ultraviolence</h2>
+                        <div class="album-subheadings">
+                            <div class="album-artist separator">Lana Del Rey</div>
+                            <div class="album-year separator">2014</div>
+                        </div>
+                        <div class="album-comments"></div>
+                    </div>
+
+                    <div class="songs-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="album-card">
+            <div class="album-card__front"></div>
+            <div class="album-card__back">
+                <div class="album-card__back--wrapper">
+                    <div class="album-headings">
+                        <h2 class="album-title">Born To Die - The Paradise Edition</h2>
+                        <div class="album-subheadings">
+                            <div class="album-artist separator">Lana Del Rey</div>
+                            <div class="album-year separator">2012</div>
+                        </div>
+                        <div class="album-comments"></div>
+                    </div>
+
+                    <div class="songs-list"></div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </body>
 
