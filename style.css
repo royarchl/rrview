@@ -89,6 +89,9 @@ button:hover {
     color: var(--text-highlight--secondary);
     text-decoration: underline;
 }
+.navigation-letter:not(:last-child) {
+    margin-right: 10px;
+}
 
 
 .letters-grid {
@@ -103,6 +106,8 @@ button:hover {
     padding: 0.6em;
     scroll-margin-top: 5em;     /* NECESSARY because the banner cuts off view
                                    vertically */
+    display: flex;
+    flex-direction: column;
 }
 
 .big-letter {

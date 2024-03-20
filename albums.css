@@ -29,7 +29,7 @@
 }
 
 
-.album-cards__container {
+#album-cards__container {
     position: absolute;
     display: grid;
     gap: 4vmin;
@@ -50,7 +50,6 @@
     /* background-color: red; */
 }
 
-/* IF WE DELETE THE CONTAINER, MAKE THIS RELATIVE AND CHILDREN ABSOLUTE */
 .album-card {
     position: relative;
     transform-style: preserve-3d;
