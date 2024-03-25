@@ -12,6 +12,8 @@
 
     --tracklist-alt-row-color: hsla(0,0%,100%,.015);
     --tracklist-row-highlight-color: hsla(0,0%,100%,.05);
+
+    --border-radius--default: 5px;
 }
 
 *,
@@ -26,4 +28,209 @@ body {
     background-color: var(--background-base);
     font-family: var(--font-family);
     color: var(--text-base);
+}
+
+::selection {
+    /* background-color: var(--text-base); */
+    background-color: var(--text-highlight--secondary);
+    color: var(--background-base);
+}
+
+.button-base {
+    color: var(--text-highlight--secondary);
+    background-color: var(--background-base);
+    padding: 0.2em 0.5em;
+    border-radius: 5px;
+    border: 1px solid var(--text-highlight--secondary);
+    font-weight: 400;
+    text-transform: capitalize;
+
+    transition: background-color 0.1s, color 0.1s;
+}
+.button-base:hover {
+    color: var(--background-base);
+    background-color: var(--text-highlight--secondary);
+    cursor: pointer;
+}
+
+.button-endline {
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+.button-endline {
+    cursor: pointer;
+}
+
+.link-base {
+    color: var(--text-highlight--secondary);
+    text-decoration: underline;
+}
+
+/* CSS SHOULD ONLY TARGET CLASSES, JS USES IDs */
+
+label,
+input,
+button {
+    display: inline-block;
+}
+
+.input-text-base {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    padding: 0.5em;
+    color: var(--text-subdued);
+    transition: color 0.1s, border-color 0.1s, background-color 0.1s;
+    width: 100%;
+    border-bottom: 1px solid var(--text-secondary);
+}
+.input-text-base::placeholder {
+    color: var(--text-secondary);
+}
+.input-text-base:focus {
+    caret-color: var(--text-highlight--secondary);
+    border-color: var(--text-highlight--secondary);
+}
+
+.input-text-fulloutline {
+    outline: none;
+    background-color: transparent;
+    padding: 0.5em;
+    width: 100%;
+    border: 1px solid var(--text-secondary);
+    border-radius: var(--border-radius--default);
+    color: var(--text-subdued);
+    transition: color 0.1s, border-color 0.1;
+}
+.input-text-fulloutline::placeholder {
+    color: var(--text-secondary);
+}
+.input-text-fulloutline:focus {
+    caret-color: var(--text-highlight--secondary);
+    border-color: var(--text-highlight--secondary);
+}
+
+.input-textarea-base {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    resize: none;
+
+    border: 1px solid var(--text-secondary);
+    border-radius: 5px;
+    padding: 0.5em;
+    color: var(--text-subdued);
+}
+.input-textarea-base:focus {
+    border-color: var(--text-highlight--secondary);
+}
+.input-textarea-base::placeholder {
+    color: var(--text-secondary);
+}
+
+.input-date-base {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    padding: 0.5em;
+    transition: color 0.1s, border-color 0.1s;
+    width: 100%;
+
+    color: rgba(57, 54, 54, 0.54);
+    border: 1px solid var(--text-secondary);
+    border-radius: var(--border-radius--default);
+}
+.input-date-base::placeholder {
+    color: rgba(var(--text-secondary), 54%);
+}
+.input-date-base:focus {
+    border-color: var(--text-highlight--secondary);
+    background-color: var(--text-highlight--secondary);
+    color: var(--text-secondary);
+}
+.input-date-base:not(:focus):valid {
+    color: var(--text-subdued);
+}
+
+.input-dropdown-base {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    padding: 0.5em;
+    transition: color 0.1s, border-color 0.1s;
+    width: 100%;
+
+    color: rgba(57, 54, 54, 0.54);
+    border: 1px solid var(--text-secondary);
+    border-radius: var(--border-radius--default);
+}
+.input-dropdown-base::placeholder {
+    color: rgba(var(--text-secondary), 54%);
+}
+.input-dropdown-base:focus {
+    border-color: var(--text-highlight--secondary);
+    background-color: var(--text-highlight--secondary);
+    color: var(--text-secondary);
+}
+.input-dropdown-base:not(:focus):valid {
+    color: var(--text-subdued);
+}
+
+.input-checkbox-base {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--text-secondary);
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.1s, border-color 0.1s;
+}
+.input-checkbox-base:focus {
+    border-color: var(--text-highlight--secondary);
+}
+.input-checkbox-base:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 70%;
+    border-radius: 2px;
+    background-color: var(--text-highlight--secondary);
+}
+.input-checkbox-base:checked {
+    border-color: var(--text-highlight--secondary);
+}
+
+/* .material-icons { */
+.material-symbols-outlined {
+    font-variation-settings: 
+        'FILL' 0,
+        'wght' 300,
+        'GRAD' 0,
+        'opsz' 24
+    ;
+    color: var(--text-secondary);
+}
+.material-symbols-outlined.md-18 {
+    font-size: 18px;
+}
+.material-symbols-outlined.filled {
+    font-variation-settings: 
+        'FILL' 1
+    ;
+}
+.material-symbols-outlined.highlight {
+    color: var(--text-highlight--secondary);
+}
+.material-symbols-outlined.lighten {
+    color: var(--text-subdued);
 }

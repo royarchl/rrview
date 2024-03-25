@@ -77,7 +77,7 @@ function generateAlphabetLetters()
             const firstLetter = artist.charAt(0).toUpperCase();
             if (firstLetter === letter) {
                 const artistLink = document.createElement('a');
-                artistLink.href = normalizeText(artist);
+                artistLink.href = `artists/${normalizeText(artist)}`;
                 artistLink.className = "artist-link";
                 artistLink.textContent = artist;
                 letterContainer.appendChild(artistLink);

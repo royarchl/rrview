@@ -1,26 +1,5 @@
 /* @import url("./theme.css"); */
 
-
-::selection {
-    background-color: var(--text-base);
-    color: var(--background-base);
-}
-
-button {
-    color: var(--text-highlight--secondary);
-    background-color: var(--background-base);
-    padding: 0.2em 0.5em;
-    border-radius: 5px;
-    border: 1px solid var(--text-highlight--secondary);
-    font-weight: 400;
-    text-transform: capitalize;
-}
-button:hover {
-    color: var(--background-base);
-    background-color: var(--text-highlight--secondary);
-    cursor: pointer;
-}
-
 .highlight {
     background-color: var(--text-highlight--secondary);
     color: var(--background-base);
@@ -46,12 +25,12 @@ button:hover {
     font-size: 1.5rem;
     cursor: default;
 }
+
+
 .buttons-container {
     display: flex;
     gap: 0.5em;
 }
-
-
 
 .container-wrapper {
     display: flex;
@@ -126,10 +105,9 @@ button:hover {
 .artist-link {
     display: inline-block;
     margin-top: 2px;
-    /* color: inherit; */
     text-decoration: none;
-    /* color: var(--text-secondary); */
     color: var(--text-secondary);
+    width: fit-content;
 }
 .artist-link:hover {
     color: var(--text-highlight--secondary);

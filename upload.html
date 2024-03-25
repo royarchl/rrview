@@ -4,65 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>toc / msc</title>
-    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./theme.css">
+    <link rel="stylesheet" href="./upload.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   </head>
   <body>
-    <nav>
-
-    </nav>
     <main>
-      <p>Click <a href="index.html">here</a> to go to the artists page.</p>
+      <div class="content-wrapper">
+        <div class="header">
+          <h1>Upload</h1>
+          <p>Click <a href="index.html" class="link-base">here</a> to edit an existing album entry.</p>
+        </div>
 
-      <h1>Post an album review!</h1>
-      <form action="./album-retrieval" id="album-retrieval" method="post">
-        <!-- base required information -->
-        <label for="albumUrl">Album URL (Spotify)</label>
-        <input type="url" id="albumUrl" name="albumUrl">
-        <input type="reset" value="Reset">
-        <input type="submit" value="Submit">
-        <br><br><br>
-      </form>
+        <form action="./album-retrieval" id="album-retrieval" method="get">
+          <div class="api-container">
+            <div class="url-input">
+              <input class="input-text-fulloutline" type="url" name="apiUrl" id="url-input" placeholder="Spotify album URL" autocomplete="off" required>
+            </div>
+            <div class="url-buttons">
+              <button id="api-button" class="button-base" type="submit">Submit</button>
+            </div>
+          </div>
+        </form>
 
-      <form action="./album-upload" id="album-upload" method="post">
-        <p style="color: red">The following data will be auto-generated after inputting a Spotify album URL.</p>
+        <form action="./album-upload" id="album-upload" type="post">
+          <div class="form-container">
+            <div class="album-container">
+                <input class="input-text-base" id="artist-name" type="text" name="artist.artistName" placeholder="Artist Name" autocomplete="off" required>
+                <input class="input-text-base" id="album-name" type="text" name="albumTitle" placeholder="Album Name" autocomplete="off" required>
+                <input class="input-date-base" id="album-year" type="date" name="albumReleaseDate" placeholder="Album Release Date" autocomplete="off" required>
+                <div class="best-song-container">
+                  <select class="input-dropdown-base" id="best-song-select" name="albumBestSong" required tabindex="-1">
+                    <option value="" disabled selected>Best Song</option>
+                    <option value="song1">Song1</option>
+                    <option value="song2">Song2</option>
+                    <option value="song3">Song3</option>
+                    <option value="song4">Song4</option>
+                  </select>
+                </div>
+                <textarea class="input-textarea-base" id="album-comment" name="albumComment" placeholder="Album Comments (optional)" autocomplete="off"></textarea>
 
-        <label for="artistName">Artist</label>
-        <input type="text" id="artistName" name="artistName" placeholder="auto-generated"><br><br>
-        <label for="albumName">Album</label>
-        <input type="text" id="albumName" name="albumName" placeholder="auto-generated"><br><br>
-        <label for="releaseYear">Release Year</label>
-        <input type="date" id="releaseYear" name="releaseYear">
-        <span style="color: grey">(auto-generated)</span><br><br>
-        <label for="albumComment">Comment</label>
-        <input type="text" id="albumComment" name="albumComment"><br><br>
-        <br><br>
+                <input type="hidden" name="albumUrl" id="album-url" value="">
+                <input type="hidden" name="albumArtUrl" id="album-art-url" value="">
+                <input type="hidden" name="artistImageUrl" id="artist-art-url" value="">
+            </div>
+            <div class="songs-container" id="songs-container">
+              <div class="song-item">
+                <input class="song-rating input-checkbox-base" type="checkbox" name="songs[0].songRating">
+                <input class="song-name input-text-base" type="text" name="songs[0].songTitle" placeholder="Track" autocomplete="off" required>
+                <input class="song-features input-text-base" type="text" name="songs[0].songFeatures" placeholder="Features" autocomplete="off">
+                <button class="delete-song button-endline" type="button" tabindex="-1" onclick="deleteSongElement(this)">
+                  <span class="material-symbols-outlined md-18">delete</span>
+                </button>
+                <button class="add-comment button-endline" type="button" tabindex="-1" onclick="toggleComment(this)">
+                  <span class="material-symbols-outlined md-18">add_comment</span>
+                </button>
+                <textarea class="song-comment input-textarea-base hidden" name="songs[0].songComment" placeholder="Song Comment (optional)"></textarea>
 
-        <!-- song-specific information -->
-        <label for="songGood">Good?</label>
-        <input type="checkbox" id="songGood" name="songGood">
-        <label for="songName">Song</label>
-        <input type="text" id="songName" name="songName" placeholder="auto-generated">
-        <label for="songFeatures">Features</label>
-        <input type="text" id="songFeatures" name="songFeatures" placeholder="auto-generated">
-        <label for="songComment">Comment</label>
-        <input type="text" id="songComment" name="songComment">
-        <br><br>
+                <input type="hidden" name="songUrl" class="song-url" id="song-url" value="https://open.spotify.com/track/2LQGoKFKkZ9yk3UeYFj2xo?si=938ed1cdb4ec4439">
+              </div>
+            </div>
+            <div class="add-song-container" onclick="addSong()">
+              <span class="material-symbols-outlined md-18">add</span>
+              <a class="add-song" id="add-song" href="#">Add Song</a>
+            </div>
 
-        <!-- one option per song returned -->
-        <label for="songBest">Best Song</label>
-        <select name="songs" id="songs">
-          <option value="" disabled selected>Select</option>
-          <option value="song1">Song1</option>
-          <option value="song2">Song2</option>
-          <option value="song3">Song3</option>
-        </select>
-
-        <br><br><br><br>
-        
-        <input type="submit" value="Submit">
-      </form>
+            <button class="button-base" type="submit" value="submit">Upload Album</button>
+          </div>
+        </form>
+      </div>
     </main>
-    <script src="./app.js"></script>
+    <script src="./upload.js"></script>
   </body>
 </html>

@@ -1,0 +1,169 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* height: 100vh; */
+
+    /* FIGURE OUT HOW TO CENTER FORM VERTICALLY ON PAGE (*SHOULD* BE HERE) */
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.header p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-top: 0.5em;
+}
+
+.content-wrapper {
+    display: grid;
+    /* gap: 5em; */
+    margin: 10em 0em;
+
+    /* DEFINES THE WIDTH OF THE ENTIRE FORM */
+    width: 50vw;
+    max-width: 600px;
+}
+
+.api-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    margin-bottom: 4em;
+}
+
+#url-input {
+    border-radius: 5px 0px 0px 5px;
+}
+
+#api-button {
+    border-radius: 0px 5px 5px 0px;
+    height: 100%;
+    border-color: var(--text-secondary);
+    color: var(--text-secondary);
+    transition: all 0.1s;
+}
+#api-button:hover {
+    background-color: var(--background-base);
+    border-color: var(--text-highlight--secondary);
+    color: var(--text-highlight--secondary);
+}
+
+.form-container {
+    display: grid;
+    row-gap: 2em;
+    height: auto;
+}
+.form-container > :nth-child(2) {
+    margin-bottom: -1.8em;
+}
+.form-container > :nth-child(3) {
+    margin-bottom: 1em;
+}
+
+.album-container {
+    display: grid;
+
+    grid-template-areas: 
+        "artist best"
+        "album comment"
+        "year comment";
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+
+    gap: 1em;
+    margin-bottom: 1em;
+}
+
+#artist-name {
+    grid-area: artist;
+}
+
+#album-name {
+    grid-area: album;
+}
+
+#album-year {
+    grid-area: year;
+}
+
+.best-song-container {
+    grid-area: best;
+}
+
+
+#album-comment {
+    grid-area: comment;
+    width: 100%;
+    height: 100%;
+    grid-row: span 2;
+
+    border-radius: 5px;
+}
+
+.song-item {
+    display: grid;
+
+    grid-template-areas: 
+        "rating name features delete add"
+        "idk comment comment comment comment";
+
+    grid-template-columns: 16px 3fr 2fr 18px;
+    /* grid-template-rows: auto, 5px; */
+
+    align-items: center;
+
+    gap: 1em;
+}
+
+.checkbox {
+    grid-area: rating;
+}
+
+.song-name {
+    grid-area: name;
+    /* grid-column-start: 2;
+    grid-column-end: 4; */
+}
+
+.song-features {
+    grid-area: features;
+}
+
+.delete-song {
+    grid-area: delete;
+}
+
+.song-comment {
+    grid-area: comment;
+    /* grid-column-start: 1;
+    grid-column-end: 6; */
+    margin-bottom: 1em;
+}
+
+
+.add-song-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.add-song {
+    /* display: flex;
+    justify-content: center; */
+
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    text-decoration: none;
+    margin-left: 0.2em;
+    outline: none;
+}
+
+
+.hidden {
+    display: none;
+}

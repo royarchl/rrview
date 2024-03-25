@@ -18,18 +18,24 @@ const artistAlbumList = [
             { "track_number": 8, "track_title": "Kintsugi", "track_comment": "", "track_rating": false },
             { "track_number": 9, "track_title": "Fingertips", "track_comment": "", "track_rating": true },
             { "track_number": 10, "track_title": "Paris, Texas (feat. SYML)", "track_comment": "", "track_rating": true },
-            { "track_number": 11, "track_title": "Grandfather please stand on the shoulders of my father while...", "track_comment": "", "track_rating": true },
+            { "track_number": 11, "track_title": "Grandfather please stand on the shoulders of my father while he's deep-sea fishing (feat. RIOPY)", "track_comment": "", "track_rating": true },
             { "track_number": 12, "track_title": "Let The Light In (feat. Father John Misty)", "track_comment": "", "track_rating": true },
             { "track_number": 13, "track_title": "Margaret (feat. Bleachers)", "track_comment": "", "track_rating": false },
             { "track_number": 14, "track_title": "Fishtail", "track_comment": "", "track_rating": true },
             { "track_number": 15, "track_title": "Peppers", "track_comment": "", "track_rating": true },
             { "track_number": 16, "track_title": "Taco Truck x VB", "track_comment": "Easily my favorite.", "track_rating": true }
         ],
-    },
+    }
 ];
 const albumListJsonString = JSON.stringify(artistAlbumList);
 
 
+let cardActive = false;
+
+function flipCard(card) {
+    card.classList.toggle("flipped");
+    cardActive = !cardActive;
+}
 
 function generateAlbumCards()
 {
@@ -43,6 +49,9 @@ function generateAlbumCards()
         // code
         const albumCard = document.createElement("div");
         albumCard.className = "album-card";
+        albumCard.addEventListener("click", function() {
+            flipCard(this);
+        });
         albumCardsContainer.append(albumCard);
         
             const albumCardFront = document.createElement("div");
@@ -134,12 +143,10 @@ function generateAlbumCards()
                             songsListRow.append(songsListColRating);
 
                                 const songsListRowRatingIcon = document.createElement("div");
-                                songsListRowRatingIcon.className = "songs-list-row__rating-icon md-18";
+                                songsListRowRatingIcon.className = "songs-list-row__rating-icon md-18 material-symbols-outlined";
                                 songsListRowRatingIcon.textContent = "favorite";
                                 if (song["track_rating"]) {
-                                    songsListRowRatingIcon.classList.add("material-icons", "filled");
-                                } else {
-                                    songsListRowRatingIcon.classList.add("material-symbols-outlined", "md-inactive");
+                                    songsListRowRatingIcon.classList.add("filled", "highlight");
                                 }
                                 songsListColRating.append(songsListRowRatingIcon);
         });
@@ -148,3 +155,73 @@ function generateAlbumCards()
 
 
 window.onload = generateAlbumCards();
+
+
+// const scrollContainer = document.querySelector("body");
+
+// scrollContainer.addEventListener("wheel", (evt) => {
+//     evt.preventDefault();
+//     scrollContainer.scrollLeft -= evt.deltaY;
+// });
+
+// function smoothScrollTo(element, targetScrollLocation, duration)
+// {
+//     var startScrollLocation = element.scrollLeft;
+//     var distance = targetScrollLocation - startScrollLocation;
+//     var startTime = null;
+
+//     function animationStep(timestamp)
+//     {
+//         if (!startTime) startTime = timestamp;
+//         var progress = timestamp - startTime;
+
+//         element.scrollLeft = easeInOutQuad(progress, startScrollLocation, distance, duration);
+
+//         if (progress < duration) {
+//             window.requestAnimationFrame(animationStep);
+//         }
+//     }
+
+//     function easeInOutQuad(t, b, c, d)
+//     {
+//         t /= d / 2;
+//         if (t < 1)  return (c / 2 * t * t + b);
+//         t--;
+//         return (-c / 2 * (t * (t - 2) - 1) + b);
+//     }
+
+//     window.requestAnimationFrame(animationStep);
+// }
+
+let lastScrollTimestamp = 0;
+
+const scrollableContainer = document.getElementById("scrollable-container");
+scrollableContainer.addEventListener("wheel", function(event) {
+    event.preventDefault();
+    const currentTimestamp = Date.now();
+    const timeSinceLastScroll = currentTimestamp - lastScrollTimestamp;
+
+    if (cardActive)  return;
+    // if (timeSinceLastScroll < 100)  return;
+
+    lastScrollTimestamp = currentTimestamp;
+    var scrollAmount = event.deltaY || -event.wheelDelta;
+    document.documentElement.scrollLeft += scrollAmount;
+
+
+
+        // var targetScroll = document.documentElement.scrollLeft + (scrollAmount * 5);
+        // smoothScrollTo(document.documentElement, targetScroll, 300);
+
+
+    // Preventing overscroll to left
+    if (document.documentElement.scrollLeft < 0) {
+        document.documentElement.scroll = 0;
+    }
+
+    // Prevent overscroll to right
+    var maxScrollLeft = document.documentElement.scrollWidth - document.documentElement.clientWidth;
+    if (document.documentElement.scrollLeft > maxScrollLeft) {
+        document.documentElement.scrollLeft = maxScrollLeft;
+    }
+});
