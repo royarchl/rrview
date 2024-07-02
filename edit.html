@@ -1,0 +1,95 @@
+<!--
+  IGNORE THIS GODAWFUL FILE. No one is going to see this disaster but me and
+  I can't be asked to make the solution pretty or elegant. It just needs to get
+  done and every second it's not makes finishing it harder.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <link rel="stylesheet" href="./theme.css">
+    <style>
+        input[type="checkbox"] {
+            width: 1rem;
+            height: 1rem;
+            background-color: red;
+        }
+        .wrapper {
+            display: grid;
+            place-items: center;
+            padding: auto 2rem;
+        }
+        #form-artist-section,
+        #form-album-section,
+        #form-song-section {
+            border: 1px solid var(--text-highlight--secondary);
+            border-radius: var(--border-radius--default);
+            padding: 1rem;
+            margin-bottom: 2rem;
+
+            display: flex;
+        }
+        .input-text-base {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <form id="album-retrieval">
+            <!-- An input bar for submitting the spotify link to edit an album -->
+            <label for="albumLink">Spotify Link</label>
+            <input type="url" id="albumLink" class="input-text-fulloutline" name="albumLink" required>
+            <button type="submit" class="button-base">Submit</button>
+        </form>
+
+        <form id="edit-form">
+            <!--
+            Artist: Name, IsFullyReviewed
+            Album: Name, Comment, IsBestAlbum
+            Song: Name, Features, IsBestSong
+            Review: Rating, Comment
+            -->
+            <div id="form-artist-section">
+                <label for="artistName">Artist Name: </label>
+                <input type="text" id="artistName" class="input-text-fulloutline" name="artistName" required>
+                <label for="isFullyReviewed">IsFullyReviewed?</label>
+                <input type="checkbox" class="input-checkbox-base" id="isFullyReviewed" name="isFullyReviewed">
+            </div>
+            <div id="form-album-section">
+                <label for="albumName">Album Name: </label>
+                <input type="text" id="albumName" class="input-text-fulloutline" name="albumName" required>
+                <label for="isBestAlbum">IsBestAlbum?</label>
+                <input type="checkbox" class="input-checkbox-base" id="isBestAlbum" name="isBestAlbum">
+                <label for="albumComment">Comment: </label>
+                <textarea name="albumComment" class="albumComment input-textarea-base"></textarea>
+                <select name="bestSong" class="input-dropdown-base" id="bestSong" required>
+                    <option value="" disabled selected>Best Song</option>
+                </select>
+            </div>
+            <!-- REPEAT for each song element. -->
+            <div id="form-song-section">
+                <input type="checkbox" class="input-checkbox-base" id="rating" name="rating">
+                <label for="songName">Song Name: </label>
+                <input type="text" class="songName input-text-fulloutline" name="songName" required>
+                <label for="songFeatures">Song Features: </label>
+                <input type="text" class="songFeatures input-text-fulloutline" name="songFeatures">
+                <br>
+                <label for="songComment">Comment: </label>
+                <textarea name="songComment" class="songComment input-textarea-base"></textarea>
+            </div>
+
+            <button type="submit" class="button-base">Upload Changes</button>
+        </form>
+    </div>
+    <script>
+        // Script information here (JS)
+    </script>
+</body>
+
+</html>
