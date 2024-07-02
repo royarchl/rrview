@@ -35,11 +35,16 @@
 .container-wrapper {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .parent-container {
     padding: 10vh 0;
-    max-width: 1000px;
+    /* MIGHT be worth making a variable for 200px (max-grid-width) and 1.2rem (grid-column-gap) */
+    max-width: calc((4 * 200px) + (3 * 1.2rem));
+    /* min-width: 550px; */
+    width: 100%;
+    margin: 0 5em;
 }
 
 .main-heading {
@@ -58,6 +63,13 @@
     justify-content: space-evenly;
     align-items: center;
     margin-bottom: 3rem;
+    text-wrap: pretty;
+
+    /* MAKES THE LETTERS STICK RATHER THAN DISAPPEAR */
+    /* position: sticky;
+    top: 4rem;
+    z-index: 2;
+    background-color: var(--background-base); */
 }
 
 .navigation-letter {
@@ -75,10 +87,14 @@
 
 .letters-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-columns: repeat(4, minmax(200px, 1fr)); */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-auto-rows: 1fr;
     column-gap: 1.2rem;
     row-gap: 2rem;
+    /* max-width: calc((4 * 200px) + (3 * 1.2rem)); */
+
+    /* box-sizing: border-box; */
 }
 
 .letter-container {
