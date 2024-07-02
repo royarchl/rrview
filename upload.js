@@ -1,21 +1,29 @@
 // HTTP REQUESTS
-const baseUrl = 'https://localhost:7231/';
+// const baseUrl = 'http://127.0.0.1:8000';
 
 // Implement backend request for route containing SpotifyAPI request (AlbumController.cs)
-document.getElementById("album-retrieval").addEventListener("submit", function(event) { 
+document.getElementById("album-retrieval").addEventListener("submit", function(event) {
     event.preventDefault();
 
-    const formData = new FormData(this);
-    console.log(formData);
+    const spotifyUrl = document.getElementById("url-input").value;
 
+    if (!spotifyUrl.includes("album")) {
+        throw new Error("The supplied url is not a valid album link.");
+    }
     this.reset();
+
+    const startIndex = spotifyUrl.indexOf("/album/") + 7;
+    const endIndex = spotifyUrl.indexOf("?");
+    const spotifyAlbumId = spotifyUrl.substring(startIndex, endIndex);
 
     const requestOptions = {
         method: "POST",
-        body: formData
-    };
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
 
-    fetch("/album-retrieval", requestOptions)
+    fetch(`/api/get_album/${spotifyAlbumId}`, requestOptions)
         .then(Response => {
             if (!Response.ok) {
                 throw new Error("Network response was not ok.");
@@ -23,70 +31,115 @@ document.getElementById("album-retrieval").addEventListener("submit", function(e
             return Response.json();
         })
         .then(data => {
-            console.log(data);
+            populateFormInformationFromAlbumObject(data);
         })
         .catch(error => {
             console.error("Error:", error);
         });
 });
 
-// Implement backend request for uploading an album
 document.getElementById("album-upload").addEventListener("submit", function(event) {
     event.preventDefault();
 
-    // create the object
     const albumTitle = document.getElementById("album-name").value;
     const albumReleaseDate = document.getElementById("album-year").value;
     const albumComment = document.getElementById("album-comment").value;
     const albumUrl = document.getElementById("album-url").value;
     const albumArtworkUrl = document.getElementById("album-art-url").value;
-    
+    const albumBestSong = document.getElementById("best-song-select").value;
+
     const artistName = document.getElementById("artist-name").value;
-    const artistImageUrl = document.getElementById("artist-art-url").value;
 
     const songs = [];
     const songElements = document.querySelectorAll(".song-item");
     songElements.forEach( (songElement, index) => {
 
-        let songTitle = songElement.querySelector(".song-name").value;
+        const songTitle = songElement.querySelector(".song-name").value.trim();
         const songFeatures = songElement.querySelector(".song-features").value;
-        if (songFeatures != "") {
-            songTitle = `${songTitle} (feat. ${songFeatures})`;
-        }
 
+        const bestSongBool = (songTitle == albumBestSong) ? true : false;
+
+        // ADD BEST_SONG FIELD
         const song = {
-            songTitle: songTitle,
-            songUrl: songElement.querySelector(".song-url").value,  // ERROR: idk why yet.
-            songNumber: index + 1,
+            Name: songTitle,
+            Url: songElement.querySelector(".song-url").value,  // ERROR: idk why yet.
+            Features: songFeatures,
+            SongNumber: index + 1,
+            IsBestSong: bestSongBool,
             review: {
-                reviewRating: songElement.querySelector(".song-rating").checked,
-                reviewComment: songElement.querySelector(".song-comment").value
+                Rating: songElement.querySelector(".song-rating").checked,
+                Comment: songElement.querySelector(".song-comment").value,
             }
         };
         songs.push(song);
     });
 
+    // RESET FORM
+    // const songsContainer = document.getElementById("songs-container");
+    // songsContainer.innerHTML = "";
+    // addSongElement();
+    // this.reset();
+
     const formDataObject = {
-        albumTitle: albumTitle,
-        albumReleaseDate: albumReleaseDate,
-        albumComment: albumComment,
-        albumUrl: albumUrl,
-        albumArtworkUrl: albumArtworkUrl,
         artist: {
-            artistName: artistName,
-            artistImageUrl: artistImageUrl
+            Name: artistName,
+            albums: [
+                {
+                    Name: albumTitle,
+                    ReleaseDate: albumReleaseDate,
+                    Comment: albumComment,
+                    Url: albumUrl,
+                    ArtUrl: albumArtworkUrl,
+                    // bestSong: albumBestSong,    // what is this? why and how to make it work?
+                    songs: songs
+                },
+            ],
         },
-        songs: songs
     };
+
     console.log(formDataObject);
-})
+
+    // MAKE THE HTTP REQUEST
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formDataObject)
+        // body: JSON.stringify({ jsonData: albumTitle })
+    };
+
+    // console.log(formDataObject);
+
+    fetch(`/api/upload`, requestOptions)
+        .then(response => {
+            if (response.status == 409) {
+                alert("The album you are trying to upload has already been posted for this artist.");
+                const songsContainer = document.getElementById("songs-container");
+                songsContainer.innerHTML = "";
+                addSongElement();
+                this.reset();
+            }
+            if (!response.ok) {
+                throw new Error("Something in the upload went wrong");
+            }
+            console.log("Success!");
+            const songsContainer = document.getElementById("songs-container");
+            songsContainer.innerHTML = "";
+            addSongElement();
+            this.reset();
+        })
+        .catch(error => {
+            console.error(error);
+        });
+});
 
 
 
 // FUNCTIONS
 
 // Add song button functionality
-function addSong()
+function addSongElement()
 {
     const songsContainer = document.getElementById("songs-container");
 
@@ -174,6 +227,9 @@ function addSong()
         value: ""
     });
     songItem.append(songUrl)
+
+    // RETURN the reference to the song-item we just created
+    return songItem;
 }
 
 // Create delete song functionality
@@ -184,7 +240,7 @@ function deleteSongElement(button)
 
     const songsContainer = document.getElementById("songs-container");
     if (songsContainer.children.length == 0) {
-        setTimeout(addSong, 150);
+        setTimeout(addSongElement, 150);
     }
 
 }
@@ -193,17 +249,62 @@ function deleteSongElement(button)
 function toggleComment(button)
 {
     const parentContainer = button.parentNode;
-    
+
     const idk = parentContainer.querySelector(".add-comment").querySelector("span");
     idk.classList.toggle("highlight");
     idk.textContent = (idk.classList.contains("highlight")) ? "chat_error" : "add_comment";
-    
+
     const commentInput = parentContainer.querySelector(".song-comment");
     commentInput.classList.toggle("hidden");
     commentInput.value = "";
     commentInput.focus();
 }
 
+function selectAll() {
+    const songsContainer = document.getElementById("songs-container");
+    let checkboxes = songsContainer.querySelectorAll(".song-item .song-rating")
+
+    checkboxes.forEach((checkbox) => {
+        checkbox.checked = true;
+    });
+}
+
+function populateFormInformationFromAlbumObject(obj)
+{
+    // POPULATING ALBUM INFORMATION
+    document.getElementById("artist-name").value = obj["artist_name"];
+    document.getElementById("album-name").value = obj["album_title"];
+    document.getElementById("album-year").value = obj["album_release_date"];
+    document.getElementById("album-url").value = obj["album_url"];
+    document.getElementById("album-art-url").value = obj["album_art_url"];
+
+
+    // POPULATING SONG INFORMATION
+    const songsContainer = document.getElementById("songs-container");
+    const objectSongsCount = obj["songs"].length;
+
+    for (let i = 1; i <= objectSongsCount; ++i)
+    {
+        // Only create a form element when none remain
+        let songItemElement = songsContainer.querySelector(`#songs-container > :nth-child(${i})`);
+        if (songItemElement == null)
+        {
+            songItemElement = addSongElement();
+        }
+
+        let songName = obj["songs"][i-1]["title"]
+        if (songName.includes("feat")) {
+            const startIndex = songName.indexOf("(feat");
+            const endIndex = songName.indexOf(")") + 1;
+            const removedPortion = songName.substring(startIndex, endIndex);
+            songName = songName.replace(removedPortion, "");
+        }
+
+        songItemElement.querySelector(".song-name").value = songName;
+        songItemElement.querySelector(".song-url").value = obj["songs"][i-1]["url"];
+        songItemElement.querySelector(".song-features").value = obj["songs"][i-1]["features"];
+    }
+}
 
 
 // EVENT LISTENERS
@@ -224,10 +325,11 @@ addSongButton.addEventListener("blur", (source) => {
 // Update dropdown with current song selection
 const dropdownButton = document.getElementById("best-song-select");
 dropdownButton.addEventListener("focus", function() {
-    
+    const currentSelectedValue = this.value;
+
     // reset options to prevent duplicates
-    dropdownButton.innerHTML = '<option value="" disabled selected>Best Song</option>';
-    
+    this.innerHTML = '<option value="" disabled selected>Best Song</option>';
+
     const songElements = document.querySelectorAll(".song-item");
     songElements.forEach( (songElement) => {
         const songNameInput = songElement.querySelector(".song-name");
@@ -237,4 +339,16 @@ dropdownButton.addEventListener("focus", function() {
             dropdownButton.appendChild(songItem);
         }
     });
+
+    // re-set the last selected value
+    this.value = currentSelectedValue;
 });
+
+async function checkAuth() {
+  const response = await fetch(`/api/check_auth`);
+  if (!response.ok) {
+    window.location.href = 'index.html';
+  }
+}
+
+window.onload = checkAuth();
