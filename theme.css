@@ -1,5 +1,5 @@
 :root {
-    --font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; /*Helvetica, sans-serif;*/
+    --font-family: Helvetica, sans-serif;
 
     --background-base: #070707;
     --background-tinted: #181818;
@@ -22,6 +22,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* scrollbar-color: var(--tracklist-row-highlight-color) var(--tracklist-alt-row-color); */
 }
 
 body {
@@ -34,6 +35,30 @@ body {
     /* background-color: var(--text-base); */
     background-color: var(--text-highlight--secondary);
     color: var(--background-base);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 3rem;
+    right: 5em;
+    background-color: var(--text-highlight--secondary);
+    /* background-color: var(--text-secondary); */
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    opacity: 100%;
+    transition: opacity 0.2s;
+    user-select: none;
+}
+.hidden {
+    /* display: none; */
+    opacity: 0%;
 }
 
 .button-base {
@@ -174,8 +199,8 @@ button {
 }
 .input-dropdown-base:focus {
     border-color: var(--text-highlight--secondary);
-    background-color: var(--text-highlight--secondary);
-    color: var(--text-secondary);
+    background-color: var(--background-tinted);
+    color: var(--text-highlight--secondary);
 }
 .input-dropdown-base:not(:focus):valid {
     color: var(--text-subdued);
@@ -223,6 +248,9 @@ button {
 .material-symbols-outlined.md-18 {
     font-size: 18px;
 }
+.material-symbols-outlined.md-32 {
+    font-size: 32px;
+}
 .material-symbols-outlined.filled {
     font-variation-settings: 
         'FILL' 1
@@ -231,6 +259,27 @@ button {
 .material-symbols-outlined.highlight {
     color: var(--text-highlight--secondary);
 }
+.material-symbols-outlined.gold {
+    color: #D4AF37;
+}
 .material-symbols-outlined.lighten {
     color: var(--text-subdued);
+}
+
+
+.page-back {
+    position: fixed;
+    top: 1.5em;
+    left: 2em;
+    z-index: 1;
+}
+.page-back > a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    /* font-size: 1.2rem; */
+    font-size: 0.8rem;
+}
+.page-back > a > span:not(:first-child) {
+    margin-left: 0.5em;
 }
