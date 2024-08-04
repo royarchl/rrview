@@ -1,0 +1,19 @@
+# Files to ignore
+
+# Database and backups
+_database/
+
+# Env variables
+.env
+
+# Python development directories
+flask_application/
+__pycache__
+*.pyc
+requirements.txt
+
+# nginx config
+nginx
+
+# project icons
+WiP logo designs.png
