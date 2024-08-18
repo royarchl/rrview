@@ -17,7 +17,7 @@ to rewrite everything in an entirely new language enriched my understanding of
 what I was doing and made me appreciate the simplicity of Python.
 
 <sub>Apologies for the quality, something is up with GNOME Screencast.</sub>
-<img src="/assets/rrview-preview.gif" alt="Website preview" style="width: 45%; margin-right: 5%;">
+<img src="/assets/rrview-preview.gif" alt="Website preview" style="width: 100%; height: auto;">
 <div style="display: flex; justify-content: space-between;">
     <img src="/assets/home-page.png" alt="Home page" style="width: 45%; margin-right: 5%;">
     <img src="/assets/albums-page.png" alt="Albums page" style="width: 45%;">
