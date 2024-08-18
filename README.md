@@ -16,8 +16,8 @@ NOTE: The backend is a rewrite of an earlier version I developed in C#. Having
 to rewrite everything in an entirely new language enriched my understanding of
 what I was doing and made me appreciate the simplicity of Python.
 
-![alt text](https://github.com/royarchl/rrview/assets/home-page.png "Home page")
-![alt text](https://github.com/royarchl/rrview/assets/albums-page.png "Albums page")
+![alt text](https://github.com/royarchl/rrview/blob/main/assets/home-page.png "Home page")
+![alt text](https://github.com/royarchl/rrview/blob/main/assets/albums-page.png "Albums page")
 
 ## Tools
 - HTML, CSS, JavaScript
