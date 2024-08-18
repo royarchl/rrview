@@ -16,8 +16,12 @@ NOTE: The backend is a rewrite of an earlier version I developed in C#. Having
 to rewrite everything in an entirely new language enriched my understanding of
 what I was doing and made me appreciate the simplicity of Python.
 
-![alt text](https://github.com/royarchl/rrview/blob/main/assets/home-page.png "Home page")
-![alt text](https://github.com/royarchl/rrview/blob/main/assets/albums-page.png "Albums page")
+<sub>Apologies for the quality, something is up with GNOME Screencast.</sub>
+<img src="/assets/rrview-preview.gif" alt="Website preview" style="width: 45%; margin-right: 5%;">
+<div style="display: flex; justify-content: space-between;">
+    <img src="/assets/home-page.png" alt="Home page" style="width: 45%; margin-right: 5%;">
+    <img src="/assets/albums-page.png" alt="Albums page" style="width: 45%;">
+</div>
 
 ## Tools
 - HTML, CSS, JavaScript
@@ -25,10 +29,11 @@ what I was doing and made me appreciate the simplicity of Python.
 - MariaDB
 
 ## Dependencies
-### Frontend
+**Frontend**
 - Handlebars.js
 - Google Material Symbols
-### Backend
+
+**Backend**
 - Flask
     - flask-sqlalchemy
     - flask-httpauth
