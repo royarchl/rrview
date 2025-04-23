@@ -2,6 +2,8 @@
 
 **A personal project for posting (and later hosting) album reviews.**
 
+https://rrview.royarchl.com <br>
+<br>
 I used to manually post these albums in Discord for friends but got tired of the
 limited character count for messages. Naturally, I decided to make use of my
 skills and develop a proper website to host these reviews and, at the same time,
